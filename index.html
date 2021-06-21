@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Shawn</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="navbar"><img class="info" src="https://2017.awiclass.monoame.com/img/hahow_progress.png" alt=""/></div>
+<div id="app">
+  <div class="classbox" v-for="c in classes">
+    <div class="top"><img class="classpicture" v-bind:src="c.coverImage.url" alt=""/>
+      <div class="tag">募資中</div>
+      <div class="bookbtn"><i class="far fa-bookmark"></i></div>
+    </div><img class="teacher" v-bind:src="c.owner.profileImageUrl" alt=""/>
+    <div class="bottom">
+      <h1 class="classtitle">{{c.title}}</h1>
+      <div class="texts">
+        <div class="pricerow"> 
+          <div class="prepice">預購價<span class="orange">NT${{c.preOrderedPrice}}</span></div>
+          <div class="lastday">剩<span class="orange">{{parseInt((new Date(c.proposalDueTime) - new Date('2016/10/14'))/1000/60/60/24)}}天</span></div>
+        </div>
+        <div class="prograssbar">
+          <div class="valuebar" v-bind:style="'width:' + (c.numSoldTickets/c.successCriteria.numSoldTickets)*100 + '%' "></div>
+        </div>
+        <div class="nowpeople">已募資<span class="orange">{{c.numSoldTickets}}/{{c.successCriteria.numSoldTickets}}</span></div>
+      </div>
+      <div class="orangebar"> </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
